@@ -1,0 +1,150 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>xd.adou</groupId>
+    <artifactId>adou-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>xd.adou</groupId>
+  <artifactId>adou-mybatistest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+     <dependencies>
+    <!--   不依赖service了,改成接口即可。两个模块之间通过dubbe通信  	-->
+  	<dependency>
+  		<groupId>xd.adou</groupId>
+    	<artifactId>adou-manager-interface</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+  	</dependency>	
+	<!-- 使用pojo测试，所以要依赖common -->
+	  <dependency>
+  		<groupId>xd.adou</groupId>
+    	<artifactId>adou-common</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+  	</dependency>		
+  	
+  			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+  	
+  	
+  	<!-- 邮件发送相关 -->
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>${javax-mail.version}</version>
+		</dependency>
+  	
+  	
+  	<!--图片服务器的的依赖文件  -->
+		<dependency>
+	  <groupId>fastdfs_client</groupId>
+  		<artifactId>fastdfs_client</artifactId>
+  		<version>1.25</version>
+	</dependency>
+	
+	<!--图片上传功能实现。  -->
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+	</dependency>	
+	<!-- 不加pageHelper  web层出现错误。 -->
+	<dependency>
+		<groupId>com.github.pagehelper</groupId>
+		<artifactId>pagehelper</artifactId>
+	</dependency>
+
+	<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+			</dependency>
+
+  				<!-- JSP相关 -->
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+				<scope>provided</scope> <!--打包的时候不打包过去，tomcat有自带的  -->
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+  	
+  			<!-- dubbo相关 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jboss.netty</groupId>
+					<artifactId>netty</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+		</dependency>
+  		
+  </dependencies>
+  <!-- 配置tomcat插件 -->
+	<build>
+	  	<plugins>
+	  		<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<path>/</path> <!-- 虚拟目录，/相当于localhost:8080==(默认访问的是该工程下的index.jsp 主要目录。)-->
+					<port>9000</port>
+				</configuration>
+			</plugin>
+	  	</plugins>
+	  </build>  
+  
+  
+  
+</project>

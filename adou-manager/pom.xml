@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>xd.adou</groupId>
+    <artifactId>adou-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>xd.adou</groupId>
+  <artifactId>adou-manager</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+
+  <dependencies>
+  	<dependency>  <!-- 依赖common，其所有的子工程也依赖common -->
+  		<groupId>xd.adou</groupId>
+	    <artifactId>adou-common</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+ 	</dependency>
+  </dependencies>
+  <modules>
+  	<module>adou-manager-interface</module>
+  	<module>adou-manager-service</module>
+  	<module>adou-manager-dao</module>
+  	<module>adou-manager-pojo</module>
+    	
+  </modules>	
+  	
+  	  <!-- 配置tomcat插件 -->
+<build>
+  	<plugins>
+  		<plugin>
+			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat7-maven-plugin</artifactId>
+			<configuration>
+				<path>/</path> <!-- 虚拟目录，/相当于localhost:8080==(默认访问的是该工程下的index.jsp 主要目录。)-->
+				<port>10000</port>
+			<!--	<url>http://192.168.25.128:8080/manager/text</url>  manager后面路径固定
+				<username>tomcat</username>
+				<password>tomcat</password> -->
+			</configuration>
+		</plugin>
+  	</plugins>
+  </build>
+  	
+  	
+  	
+  	
+
+</project>
